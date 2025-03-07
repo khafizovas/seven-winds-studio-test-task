@@ -3,7 +3,7 @@ import globals from 'globals';
 // Правила для webpack.config.js
 export default [
   {
-    files: ['webpack.config.js', 'lint-staged.config.js'],
+    files: ['webpack.config.js', 'lint-staged.config.js', 'scripts/*'],
     languageOptions: {
       globals: globals.node,
     },

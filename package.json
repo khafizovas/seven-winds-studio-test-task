@@ -8,7 +8,8 @@
     "prepare": "husky",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "lint:fix": "eslint --fix . && npm run format"
+    "lint:fix": "eslint --fix . && npm run format",
+    "create-component": "node scripts/createComponent.js"
   },
   "lint-staged": {
     "*": "npm run lint:fix"
@@ -38,6 +39,7 @@
     "lint-staged": "^15.4.3",
     "mini-css-extract-plugin": "^2.6.1",
     "prettier": "^3.5.3",
+    "prompts": "^2.4.2",
     "react-refresh-typescript": "^2.0.7",
     "sass": "^1.55.0",
     "sass-loader": "^14.0.0",
