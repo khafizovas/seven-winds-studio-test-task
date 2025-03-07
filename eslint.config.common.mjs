@@ -15,13 +15,25 @@ export default [
   pluginReactHooks.configs['recommended-latest'],
 
   {
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+  },
+
+  {
     plugins: {
       prettier: pluginPrettier,
     },
+  },
+
+  {
     rules: {
       'prettier/prettier': 'error', // Добавляет Prettier как правило ESLint
       'max-depth': ['warn', 3], // Запрещает вложенность в коде уровня больше 3 отступов
     },
   },
+
   eslintConfigPrettier, // Отключает правила, конфликтующие с Prettier
 ];

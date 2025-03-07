@@ -1,9 +1,9 @@
 import globals from 'globals';
 
-// Правила для webpack.config.js
+// Правила для JS с require, потому что это только конфиги или скрипты для разработки
 export default [
   {
-    files: ['webpack.config.js', 'lint-staged.config.js', 'scripts/*'],
+    files: ['**/*.js'],
     languageOptions: {
       globals: globals.node,
     },
