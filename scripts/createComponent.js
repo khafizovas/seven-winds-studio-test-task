@@ -114,7 +114,7 @@ export default function ${componentName}(props: ${componentName}Props) {
     { name: `${componentName}.tsx`, content: componentContent },
     { name: `${componentName}.service.ts`, content: serviceContent },
     { name: `${componentName}.types.ts`, content: typesContent },
-    { name: `${componentName}.style.modules.scss`, content: styleContent },
+    { name: `${componentName}.style.module.scss`, content: styleContent },
   ];
 
   sliceFiles.forEach((file) => {

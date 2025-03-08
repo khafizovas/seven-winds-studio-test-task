@@ -1,5 +1,7 @@
-import styles from './App.style.module.scss';
+import { Home } from 'src/pages';
+
+import './App.style.scss';
 
 export default function App() {
-  return <div className={styles.app}>App</div>;
+  return <Home />;
 }
