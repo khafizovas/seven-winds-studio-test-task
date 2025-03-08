@@ -41,7 +41,7 @@
 
 .header_sidebar {
   height: 100%;
-  width: 234px;
+  width: var(--sidebar-width);
   padding: 0 7px 0 20px;
 
   display: flex;

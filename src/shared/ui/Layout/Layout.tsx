@@ -10,8 +10,29 @@ import { Header } from '../Header';
 import { NavItem } from '../NavItem';
 import { Dropdown } from '../Dropdown';
 
+import { Sidebar } from '../Sidebar';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Layout(props: LayoutProps) {
-  console.log('Debug component Layout', props);
+  // TODO: Передавать как пропсы
+  const sidebarItems = [
+    { label: 'По проекту' },
+    { label: 'Объекты' },
+    { label: 'РД' },
+    { label: 'МТО' },
+    { label: 'СМР', isSelected: true },
+    { label: 'График' },
+    { label: 'МиМ' },
+    { label: 'Рабочие' },
+    { label: 'Капвложения' },
+    { label: 'Бюджет' },
+    { label: 'Финансирование' },
+    { label: 'Панорамы' },
+    { label: 'Камеры' },
+    { label: 'Поручения' },
+    { label: 'Контрагенты' },
+  ];
+  //
 
   return (
     <div className={styles.layout}>
@@ -35,6 +56,7 @@ export default function Layout(props: LayoutProps) {
         }
         mainContent="Строительно-монтажные работы"
       />
+      <Sidebar items={sidebarItems} />
     </div>
   );
 }

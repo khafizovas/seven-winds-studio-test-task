@@ -1,0 +1,23 @@
+.sidebar {
+  width: var(--sidebar-width);
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+
+  border-right: 1px solid #414144;
+}
+
+.item {
+  height: 32px;
+  padding: 5px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.selected_item {
+  background: #a1a1aa;
+}
