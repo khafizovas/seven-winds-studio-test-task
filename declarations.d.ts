@@ -34,3 +34,8 @@ declare module '*.svg' {
   const component: FunctionComponent<SVGProps<SVGSVGElement>>;
   export default component;
 }
+
+declare module '*.scss' {
+  const content: { [className: string]: string };
+  export = content;
+}
