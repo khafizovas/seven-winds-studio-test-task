@@ -1,0 +1,17 @@
+export const SIDEBAR_ITEMS = [
+  { label: 'По проекту' },
+  { label: 'Объекты' },
+  { label: 'РД' },
+  { label: 'МТО' },
+  { label: 'СМР', isSelected: true },
+  { label: 'График' },
+  { label: 'МиМ' },
+  { label: 'Рабочие' },
+  { label: 'Капвложения' },
+  { label: 'Бюджет' },
+  { label: 'Финансирование' },
+  { label: 'Панорамы' },
+  { label: 'Камеры' },
+  { label: 'Поручения' },
+  { label: 'Контрагенты' },
+];

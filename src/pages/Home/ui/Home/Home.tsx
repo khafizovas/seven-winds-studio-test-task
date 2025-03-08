@@ -1,10 +1,5 @@
-import { Layout } from 'src/shared';
+import { PageLayout } from 'src/widgets';
 
-import { HomeProps } from './Home.types';
-
-export default function Home(props: HomeProps) {
-  console.log('Debug component Home', props);
-
-  // TODO: Переименуйте .Home в snake_case
-  return <Layout />;
+export default function Home() {
+  return <PageLayout main={<div>TODO</div>} />;
 }

@@ -1,4 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+import type { ReactElement } from 'react';
+
 export interface LayoutProps {
-  // Здесь могла бы быть ваша реклама.
+  header: ReactElement;
+  sidebar: ReactElement;
+  main: ReactElement;
 }
