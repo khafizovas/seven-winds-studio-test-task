@@ -28,8 +28,7 @@ const LAYERS_WITH_EXPORTS = [
     {
       type: 'text',
       name: 'slice',
-      message:
-        'Введите название слайса (или Enter, чтобы пропустить этот шаг):',
+      message: 'Введите название слайса:',
     },
     {
       type: 'text',
@@ -46,13 +45,35 @@ const LAYERS_WITH_EXPORTS = [
     process.exit(1);
   }
 
-  let componentDir = path.join(process.cwd(), 'src', layer);
-
-  if (slice) {
-    componentDir = path.join(componentDir, slice);
+  if (!slice && !['shared', 'app'].includes(layer)) {
+    console.error(
+      'Название слайса обязательно для всех слоёв, кроме Shared и App.',
+    );
+    process.exit(1);
   }
-  componentDir = path.join(componentDir, componentName);
 
+  const sliceDir = path.join(process.cwd(), 'src', layer, slice);
+  if (!fs.existsSync(sliceDir)) {
+    fs.mkdirSync(sliceDir, { recursive: true });
+    console.log(`Директория ${sliceDir} успешно создана.`);
+
+    const segmentDirs = [
+      path.join(sliceDir, 'ui'),
+      path.join(sliceDir, 'api'),
+      path.join(sliceDir, 'model'),
+      path.join(sliceDir, 'lib'),
+      path.join(sliceDir, 'config'),
+    ];
+
+    segmentDirs.forEach((segmentDirName) => {
+      fs.mkdirSync(segmentDirName, { recursive: true });
+    });
+    console.log(`Директории сегментов успешно созданы в ${sliceDir}.`);
+  } else {
+    console.log(`Директория ${sliceDir} уже существует.`);
+  }
+
+  const componentDir = path.join(sliceDir, 'ui', componentName);
   if (fs.existsSync(componentDir)) {
     console.error(`Директория ${componentDir} уже существует.`);
     process.exit(1);
@@ -64,39 +85,57 @@ const LAYERS_WITH_EXPORTS = [
 `;
 
   const componentContent = `import { ${componentName}Props } from './${componentName}.types';
-import './${componentName}.style.scss';
+import styles from './${componentName}.style.module.scss';
 
 export default function ${componentName}(props: ${componentName}Props) {
   console.log('Debug component ${componentName}', props);
 
-  return <div>${componentName}</div>;
+  // TODO: Переименуйте .${componentName} в snake_case
+  return <div className={styles.${componentName}}>${componentName}</div>;
 }
 `;
 
-  const serviceContent = `// ${componentName}.service.ts
+  const serviceContent = `// Функции, используемые в компоненте.
 `;
 
   const typesContent = `export interface ${componentName}Props {
-  // Здесь могла бы быть ваша реклама
+  // Здесь могла бы быть ваша реклама.
 }
 `;
 
-  const styleContent = `// ${componentName}.style.scss
+  const styleContent = `// TODO: Переименуйте .${componentName} в snake_case
+.${componentName} {
+  // Здесь могла бы быть ваша реклама.
+}
 `;
 
-  const files = [
+  const sliceFiles = [
     { name: 'index.ts', content: indexContent },
     { name: `${componentName}.tsx`, content: componentContent },
     { name: `${componentName}.service.ts`, content: serviceContent },
     { name: `${componentName}.types.ts`, content: typesContent },
-    { name: `${componentName}.style.scss`, content: styleContent },
+    { name: `${componentName}.style.modules.scss`, content: styleContent },
   ];
 
-  files.forEach((file) => {
+  sliceFiles.forEach((file) => {
     const filePath = path.join(componentDir, file.name);
     fs.writeFileSync(filePath, file.content);
-    console.log(`Сгенерирован файл ${filePath}`);
+
+    console.log(`Сгенерирован файл компонента ${filePath}`);
   });
+
+  if (slice) {
+    const sliceIndexFilePath = path.join(sliceDir, 'index.ts');
+    const sliceExportStatement = `export { ${componentName} } from './ui/${componentName}';
+`;
+
+    if (!fs.existsSync(sliceIndexFilePath)) {
+      fs.writeFileSync(sliceIndexFilePath, sliceExportStatement);
+    } else {
+      fs.appendFileSync(sliceIndexFilePath, sliceExportStatement);
+    }
+    console.log(`Добавлен ре-экспорт в файл ${sliceIndexFilePath}`);
+  }
 
   if (LAYERS_WITH_EXPORTS.includes(layer)) {
     const layerIndexFilePath = path.join(
@@ -105,7 +144,7 @@ export default function ${componentName}(props: ${componentName}Props) {
       layer,
       'index.ts',
     );
-    const exportStatement = `export * from './${slice ? slice + '/' : ''}${componentName}';
+    const exportStatement = `export * from './${slice ? slice + '/' : ''}ui/${componentName}';
 `;
 
     if (!fs.existsSync(layerIndexFilePath)) {
