@@ -1,1 +1,0 @@
-export { WorkTableBody } from './ui';

@@ -3,7 +3,7 @@ import { useWorkData, WorkEditTableRowContent } from 'src/entities';
 import type { WorkTableBodyProps } from './WorkTableBody.types';
 import styles from './WorkTableBody.style.module.scss';
 
-import { useWorkTableEdit } from '../../lib';
+import { useWorkTableEdit } from '../../WorkTableBody/lib';
 
 export default function WorkTableBody(props: WorkTableBodyProps) {
   const { workRenderer: WorkRenderer, messageRenderer: MessageRenderer } =

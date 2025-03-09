@@ -1,1 +1,0 @@
-export { WorkTableMessage } from './ui';
