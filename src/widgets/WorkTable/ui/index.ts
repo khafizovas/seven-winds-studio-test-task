@@ -1,1 +1,0 @@
-export { WorkTable } from './WorkTable';

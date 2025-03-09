@@ -6,15 +6,7 @@ import {
 import { TableHeader } from 'src/shared';
 
 import styles from './WorkTable.style.module.scss';
-
-const TABLE_COLUMN_TITLES = [
-  'Уровень',
-  'Наименование работ',
-  'Основаная з/п',
-  'Оборудование',
-  'Накладные расходы',
-  'Сметная прибыль',
-];
+import { TABLE_COLUMN_TITLES } from './constants';
 
 export default function WorkTable() {
   return (

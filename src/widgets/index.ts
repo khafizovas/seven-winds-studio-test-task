@@ -1,2 +1,2 @@
-export * from './PageLayout';
-export * from './WorkTable';
+export * from './layout';
+export * from './work';
