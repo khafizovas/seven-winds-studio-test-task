@@ -23,12 +23,20 @@
   display: flex;
   align-items: center;
   gap: 20px;
+
+  svg {
+    cursor: pointer;
+  }
 }
 
 .header_top_navigation {
   display: flex;
   align-items: center;
   gap: 20px;
+
+  div {
+    cursor: pointer;
+  }
 }
 
 .header_bottom {
@@ -49,6 +57,10 @@
   justify-content: space-between;
 
   border-right: 1px solid #414144;
+
+  div {
+    cursor: pointer;
+  }
 }
 
 .header_main {
