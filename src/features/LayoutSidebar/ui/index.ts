@@ -1,1 +1,1 @@
-export { LayoutSidebar } from './LayoutSidebar';
+export { LayoutSidebar } from '.';
