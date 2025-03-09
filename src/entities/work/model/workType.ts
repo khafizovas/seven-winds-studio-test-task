@@ -6,4 +6,5 @@ export interface WorkType {
   parentId: number | null;
   rowName: string;
   salary: number;
+  child?: WorkType[];
 }

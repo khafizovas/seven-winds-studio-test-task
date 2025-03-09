@@ -1,6 +1,6 @@
 import { WorkType } from './workType';
 
-export interface GetWorksResponse extends Omit<WorkType, 'parentId'> {
+export interface GetWorksResponse extends Omit<WorkType, 'parentId' | 'child'> {
   machineOperatorSalary: number;
   mainCosts: number;
   materials: number;
@@ -25,4 +25,7 @@ export interface CreateWorkResponse {
 
 export type UpdateWorkResponse = CreateWorkResponse;
 
-export type DeleteWorkResponse = CreateWorkResponse;
+export interface DeleteWorkResponse {
+  changed: GetWorksResponse[];
+  current: null;
+}

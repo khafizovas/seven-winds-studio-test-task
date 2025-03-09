@@ -1,16 +1,24 @@
 import { CreateWorkRequest, GetWorksResponse, WorkType } from '../model';
 
-export const mapRawWorkToWorkType = (item: GetWorksResponse): WorkType => ({
+export const mapRawWorkToWorkType = (
+  item: GetWorksResponse,
+  parentId?: number,
+): WorkType => ({
   id: item.id,
   equipmentCosts: item.equipmentCosts,
   estimatedProfit: item.estimatedProfit,
   overheads: item.overheads,
-  parentId: 0, // TODO
+  parentId: parentId ?? null,
   rowName: item.rowName,
   salary: item.salary,
+  child: item.child?.map((childWork) =>
+    mapRawWorkToWorkType(childWork, item.id),
+  ),
 });
 
-export const mapWorkTypeToRawWork = (work: WorkType): CreateWorkRequest => ({
+export const mapWorkTypeToRawWork = (
+  work: Omit<WorkType, 'id'>,
+): CreateWorkRequest => ({
   equipmentCosts: work.equipmentCosts,
   estimatedProfit: work.estimatedProfit,
   overheads: work.overheads,

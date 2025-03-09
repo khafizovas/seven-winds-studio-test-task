@@ -1,5 +1,6 @@
 .sidebar {
   width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
 
   font-family: var(--font-family);
   font-weight: 400;

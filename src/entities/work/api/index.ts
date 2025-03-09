@@ -1,1 +1,7 @@
-export { workApi } from './workApi';
+export {
+  workApi,
+  useGetWorksQuery,
+  useCreateWorkMutation,
+  useUpdateWorkMutation,
+  useDeleteWorkMutation,
+} from './workApi';

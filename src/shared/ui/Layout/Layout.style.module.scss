@@ -4,3 +4,22 @@
 
   background: #27272a;
 }
+
+.content_wrapper {
+  height: calc(100vh - 88px);
+
+  display: flex;
+}
+
+.main_wrapper {
+  width: 100%;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: 0.01em;
+  color: #fff;
+
+  background: #202124;
+}

@@ -7,8 +7,10 @@ export default function Layout(props: LayoutProps) {
   return (
     <div className={styles.layout}>
       {header}
-      {sidebar}
-      {main}
+      <div className={styles.content_wrapper}>
+        {sidebar}
+        <div className={styles.main_wrapper}>{main}</div>
+      </div>
     </div>
   );
 }

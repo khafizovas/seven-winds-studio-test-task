@@ -1,5 +1,5 @@
-import { PageLayout } from 'src/widgets';
+import { PageLayout, WorkTable } from 'src/widgets';
 
 export default function Home() {
-  return <PageLayout main={<div>TODO</div>} />;
+  return <PageLayout main={<WorkTable />} />;
 }
