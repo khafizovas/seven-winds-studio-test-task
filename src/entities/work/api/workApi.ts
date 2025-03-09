@@ -14,6 +14,8 @@ import {
 } from '../lib';
 
 const BASE_URL = 'http://185.244.172.108:8081/';
+
+// TODO: По-хорошему положить бы в .env
 const ENTITY_ID = 148866;
 
 export const workApi = createApi({
